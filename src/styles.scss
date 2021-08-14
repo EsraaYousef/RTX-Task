@@ -1,0 +1,489 @@
+$main-color: #26975a;
+$second-color: #ff6161;
+$dark-color: #545454;
+$font-color: #9dac9b;
+$light-grey: #f9fafa;
+$white-color: #ffffff;
+$black-color: #000000;
+$radius: 10px;
+
+%shadow {
+  -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.12);
+  -moz-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.12);
+  -o-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.12);
+}
+
+%ease {
+  -webkit-transition: all 0.5s linear 0s;
+  -moz-transition: all 0.5s linear 0s;
+  -o-transition: all 0.5s linear 0s;
+  transition: all 0.5s linear 0s;
+}
+%radius {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  border-radius: 10px;
+}
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  color: $black-color;
+}
+
+b {
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    // @extend %shadow;
+    background-color: $white-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $main-color;
+    outline: 1px solid $main-color;
+    border-radius: 2px;
+  }
+}
+html {
+  direction: ltr;
+}
+body {
+  font-family: "Cairo", sans-serif;
+  text-align: start;
+  font-size: 16px;
+}
+a {
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    text-decoration: none;
+    @extend %ease;
+  }
+}
+.container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 30px;
+}
+
+.form-control {
+  border: 1px solid $font-color;
+  color: #acab9b;
+  caret-color: $main-color;
+  position: relative;
+  direction: initial;
+  text-align: start;
+  border-radius: $radius;
+  height: 52px;
+  padding-left: 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: $main-color;
+  background-color: $white-color;
+
+  &::placeholder {
+    color: $main-color;
+    font-size: 14px;
+  }
+
+  &:hover,
+  &:focus {
+    outline: unset;
+    box-shadow: unset;
+  }
+  &:focus {
+    border-color: $main-color;
+  }
+}
+textarea {
+  &.form-control {
+    height: 120px;
+  }
+}
+.btn-main {
+  background-color: $main-color;
+  color: $white-color;
+  text-transform: uppercase;
+  @extend %ease;
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+    color: $white-color;
+    outline: none;
+    box-shadow: unset;
+  }
+}
+
+.btn-hover {
+  position: relative;
+  overflow: hidden;
+  background-color: $main-color;
+  z-index: 1;
+  overflow: hidden;
+
+  &:after,
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    width: 100%;
+    height: 50%;
+    right: 0;
+    z-index: -1;
+    background: $main-color;
+    transition: all 0.6s ease;
+  }
+  &:before {
+    top: 0;
+  }
+  &:after {
+    bottom: 0;
+  }
+  &:hover {
+    &:before,
+    &:after {
+      height: 0;
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+.font-color {
+  color: $font-color;
+  font-weight: 600;
+}
+.second-color {
+  color: $second-color;
+}
+/*start loader*/
+.loader {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  margin: auto;
+  z-index: 2;
+  z-index: 99999;
+  background-color: $white-color;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  height: 100px;
+
+  .load-circle {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-right: 4px solid $main-color;
+    -webkit-animation: rotation 1s infinite linear;
+    -o-animation: rotation 1s infinite linear;
+    animation: rotation 1s infinite linear;
+    margin: 0 auto;
+    &:after {
+      content: "";
+      position: absolute;
+      right: 0;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      display: inline-block;
+      width: 8px;
+      border-radius: 50%;
+      height: 8px;
+      background-color: $main-color;
+    }
+  }
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(359deg);
+    -moz-transform: rotate(359deg);
+    -ms-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+/*end loader*/
+/*start header*/
+.header {
+  background-color: $light-grey;
+  padding: 20px 0;
+  text-align: center;
+  .main-link {
+    margin: 0px;
+    padding: 20px;
+    text-align: center;
+    color: $main-color;
+    font-weight: 600;
+    font-size: 30px;
+  }
+  margin-bottom: 20px;
+  a {
+    display: inline-block;
+    text-align: center;
+    margin-left: 10px;
+    &.add-book {
+      color: $black-color;
+    }
+  }
+}
+/*end header*/
+/*start home*/
+.home {
+  .top-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .form-control {
+      margin-right: 20px;
+    }
+    .btn {
+      width: 200px;
+    }
+  }
+  p {
+    font-size: 14px;
+    color: $second-color;
+    text-align: center;
+    font-weight: 600;
+  }
+}
+.light {
+  font-weight: 300;
+  color: $font-color;
+  font-size: 13px;
+  display: inline-block;
+  margin-left: 5px;
+}
+/*end home*/
+/*sorting-block*/
+.sorting-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $main-color;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  h3 {
+    margin-bottom: 0;
+  }
+}
+/*start card*/
+.books-card {
+  background-color: $light-grey;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  .card-header {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: $black-color;
+    background: transparent;
+    max-height: 60px;
+    overflow: hidden;
+    line-height: 22px;
+    text-overflow: ellipsis;
+    a {
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: $black-color;
+      background: transparent;
+      max-height: 60px;
+      overflow: hidden;
+      line-height: 22px;
+      text-overflow: ellipsis;
+    }
+  }
+  h6 {
+    color: $dark-color;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .card-image {
+    max-height: 100px;
+    height: 100px;
+  }
+}
+/*end card*/
+/*Start book details*/
+.d-block {
+  position: relative;
+}
+.back-link {
+  color: $black-color;
+  font-size: 16px;
+  font-weight: 600;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+
+  &:hover {
+    color: $font-color;
+  }
+}
+.details-card {
+  margin: 0 auto;
+  background-color: $light-grey;
+  border: 10px solid $light-grey;
+  border-radius: 10px;
+
+  .card-header {
+    background: transparent;
+    text-align: start;
+  }
+
+  @media (max-width: 576px) {
+    width: 80%;
+    margin: 20px auto;
+  }
+  h3 {
+    color: $main-color;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0px;
+    font-size: 20px;
+  }
+  .content {
+    border: 1px solid wheat;
+    background-color: wheat;
+    color: #5e3f3e;
+    border-radius: 10px 10px 0px 0px;
+    h4 > span,
+    h3 > span {
+      font-size: 1.3em;
+    }
+  }
+}
+/*end book details*/
+
+/*start pagination*/
+.pagination {
+  margin: 20px 0px;
+  padding: 0px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .page-item {
+    display: inline-block;
+  }
+  .pagination-list {
+    button {
+      outline: none;
+      box-shadow: none;
+      align-content: normal;
+      margin: 0 5px;
+    }
+    .page-link {
+      color: $main-color;
+    }
+    .disabled {
+      pointer-events: none;
+      background-color: $dark-color;
+      color: $font-color;
+      cursor: no-drop;
+    }
+    .page-link {
+      cursor: pointer;
+    }
+
+    .active {
+      background-color: $main-color;
+      border: none;
+      color: $white-color;
+    }
+    .active:hover {
+      background-color: $main-color;
+    }
+  }
+
+  .page-num {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .page-num span {
+    color: $main-color;
+  }
+}
+/*end pagination*/
+/*ADD BOOK*/
+.box-w-shadow.w-mr-40 {
+  width: 80%;
+  margin: auto;
+  background: #fafafa;
+  padding: 15px;
+  margin-top: 40px;
+  @extend %shadow;
+
+  .main-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: $main-color;
+  }
+  .btn-main {
+    width: 200px;
+  }
+}
